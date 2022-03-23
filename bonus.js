@@ -8,7 +8,9 @@ const channels = require("./channels.json");
  * BONUS: use iteration method `.reduce()`
  ****************************************************************/
 function totalVideosDuration(channel) {
-  // Your code here
+  let value = 0;
+  channel.videos.forEach((video) => (value = value + video.duration));
+  return value;
 }
 
 /**************************************************************
@@ -20,7 +22,15 @@ function totalVideosDuration(channel) {
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
 function channelWithMostContent(channels) {
-  // Your code here
+  let longest = 0;
+  let longestchannel;
+  channels.forEach((channel) => {
+    if (totalVideosDuration(channel) >= longest) {
+      longest = totalVideosDuration(channel);
+      longestchannel = channel;
+    }
+  });
+  return longestchannel;
 }
 
 /**************************************************************
@@ -31,17 +41,20 @@ function channelWithMostContent(channels) {
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
 function longestChannelName(channels) {
-  // Your code here
+  // let stringOfNames = [];
+  // channels.forEach((channel) => stringOfNames.push(channel.name));
+  // stringOfNames.sort((a, b) => b.length - a.length);
+  // return stringOfNames[channels.length - 1];
 }
 
 // Check your answers by running this file and comparing what it logs
 
-console.log(totalVideosDuration(channels[0]));
+//console.log(totalVideosDuration(channels[0]));
 // Should log:
 
 // 636
 
-console.log(channelWithMostContent(channels));
+//console.log(channelWithMostContent(channels));
 // Should log:
 
 // {
